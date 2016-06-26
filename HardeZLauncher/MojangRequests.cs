@@ -1,12 +1,9 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
 using System.Net;
 using System.IO;
 
-namespace WindowsFormsApplication1
+namespace Laucher
 {
     /* more information on http://wiki.vg/Authentication*/
     class MojangRequests
@@ -41,8 +38,6 @@ namespace WindowsFormsApplication1
         private static String[] request(String postData, String subURL)
         {
             String[] status = new String[2] { "NOT", "unknown" };
-
-            //if last
 
             WebRequest request = WebRequest.Create(URL_authserver + subURL);
             request.Method = "POST";
