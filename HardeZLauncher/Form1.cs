@@ -1,14 +1,21 @@
 ﻿using System;
 using System.Windows.Forms;
 using System.Net;
+using System.IO;
+using System.Runtime.Serialization;
+using System.Runtime.Serialization.Formatters.Binary;
 
 namespace Laucher
 {
     public partial class MainForm : Form
     {
+        private MainClass main;
         public MainForm()
         {
             InitializeComponent();
+            main = new MainClass();
+            Account my =  new Account();
+            my.Email = "sdf";
         }
 
         private void button3_Click(object sender, EventArgs e)
@@ -44,10 +51,31 @@ namespace Laucher
 
         private void button2_Click(object sender, EventArgs e)
         {
-            int i = Updater.getUpdateLauncher("e:/");
-            label2.Text = i.ToString();
-            i = Updater.getUpdateModpack("e:/");
-            label2.Text += i.ToString();
+
+        }
+
+        private void button5_Click(object sender, EventArgs e)
+        {
+            /*Settings set = new Settings();
+            label3.Text += set.assetsDir;
+
+            BinaryFormatter binFormat = new BinaryFormatter();
+
+            Stream fStream = new FileStream("user.dat",
+                 FileMode.Create, FileAccess.Write, FileShare.None);
+            binFormat.Serialize(fStream, set);
+
+            fStream.Close();
+
+            Stream OStream = new FileStream("user.dat",
+                 FileMode.Open, FileAccess.Read, FileShare.None);
+
+            BinaryFormatter binFormat2 = new BinaryFormatter();
+
+            Settings st2 = (Settings)binFormat2.Deserialize(OStream);
+
+            label3.Text += st2.assetsDir;*/
+
         }
     }
 }
