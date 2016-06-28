@@ -25,7 +25,7 @@ namespace Laucher
         private int Xmx = 4096;
         private int Xms = 512;
 
-        public Settings ()
+        public SettingsStorage()
         {
             laucherDir = @"C:\Games\HardeZLauncher";
             gameDir = @"C:\Games\HardeZLauncher\modpacks";
