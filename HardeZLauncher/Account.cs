@@ -10,7 +10,7 @@ namespace Laucher
     {
         enum errorInfo
         {
-            notError = 0,
+            notError = 1,
             accTok= -1,
             cliTok= -2,
             identifare= -3,
@@ -164,6 +164,18 @@ namespace Laucher
                 default:
                     return "Unknown code error";
             }
+        }
+
+        public bool equals(Account acnt)
+        {
+            if (acnt.AccessToken == this.AccessToken &&
+                acnt.Id == this.Id &&
+                acnt.Name == this.Name &&
+                acnt.Email == this.Email)
+            {
+                return true;
+            }
+            else return false;
         }
     }
 }
