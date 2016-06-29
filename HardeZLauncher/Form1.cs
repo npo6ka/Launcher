@@ -10,12 +10,15 @@ namespace Laucher
     public partial class MainForm : Form
     {
         private MainClass main;
+        private Account account;
         public MainForm()
         {
             InitializeComponent();
             main = new MainClass();
-            Account my =  new Account();
-            my.Email = "sdf";
+
+            account = new Account();
+            account.Name = "olololo";
+            label2.Text += account.Name;
         }
 
         private void button3_Click(object sender, EventArgs e)
@@ -51,7 +54,12 @@ namespace Laucher
 
         private void button2_Click(object sender, EventArgs e)
         {
+            SettingsForm set = new SettingsForm(account);
 
+            
+            set.ShowDialog();
+            label2.Text += account.Name;
+            
         }
 
         private void button5_Click(object sender, EventArgs e)

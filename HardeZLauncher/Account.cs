@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Laucher
 {
-    class Account
+    public class Account
     {
         enum errorInfo
         {
