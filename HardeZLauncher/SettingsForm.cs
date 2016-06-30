@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -17,6 +18,19 @@ namespace Laucher
         {
             InitializeComponent();
             ac = acc;
+        }
+
+        private String getPath(String str)
+        {
+            if (folderBrowserDialog1.SelectedPath == "" && Directory.Exists(str))
+            {
+                folderBrowserDialog1.SelectedPath = str;
+            }
+            if (folderBrowserDialog1.ShowDialog() == DialogResult.OK)
+            {
+                str = folderBrowserDialog1.SelectedPath;
+            }
+            return str;
         }
 
         private void button2_Click(object sender, EventArgs e)
@@ -35,15 +49,12 @@ namespace Laucher
 
         private void button3_Click(object sender, EventArgs e)
         {
-            if (folderBrowserDialog1.ShowDialog() == DialogResult.OK)
-            {
-                textBox1.Text = folderBrowserDialog1.SelectedPath;
-            }
+            textBox1.Text = getPath(textBox1.Text);
         }
 
         private void button4_Click(object sender, EventArgs e)
         {
-            ListViewItem item1 = new ListViewItem("item1", 0);
+            /*ListViewItem item1 = new ListViewItem("item1", 0);
             // Place a check mark next to the item.
             item1.Checked = true;
             item1.SubItems.Add("1");
@@ -68,9 +79,58 @@ namespace Laucher
 
             listView1.Items.AddRange(new ListViewItem[] { item1, item2, item3 });
 
-            this.Controls.Add(listView1);
+            this.Controls.Add(listView1);*/
 
         }
 
+        private void button4_Click_1(object sender, EventArgs e)
+        {
+            textBox2.Text = getPath(textBox2.Text);
+        }
+
+        private void button5_Click(object sender, EventArgs e)
+        {
+            textBox3.Text = getPath(textBox3.Text);
+        }
+
+        private void button6_Click(object sender, EventArgs e)
+        {
+            textBox4.Text = getPath(textBox4.Text);
+        }
+
+        private void button7_Click(object sender, EventArgs e)
+        {
+            textBox5.Text = getPath(textBox5.Text);
+        }
+
+        private void button8_Click(object sender, EventArgs e)
+        {
+            textBox6.Text = getPath(textBox6.Text);
+        }
+
+        private void button9_Click(object sender, EventArgs e)
+        {
+            textBox7.Text = getPath(textBox7.Text);
+        }
+
+        private void button10_Click(object sender, EventArgs e)
+        {
+            textBox8.Text = getPath(textBox8.Text);
+        }
+
+        private void button11_Click(object sender, EventArgs e)
+        {
+            textBox9.Text = getPath(textBox9.Text);
+        }
+
+        private void button12_Click(object sender, EventArgs e)
+        {
+            textBox10.Text = getPath(textBox10.Text);
+        }
+
+        private void label11_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }
