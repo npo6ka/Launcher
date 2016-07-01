@@ -46,6 +46,7 @@
   <ItemGroup>
     <Compile Include="Account.cs" />
     <Compile Include="AccountHendler.cs" />
+    <Compile Include="AccountPanel.cs" />
     <Compile Include="AccountsForm.cs">
       <SubType>Form</SubType>
     </Compile>

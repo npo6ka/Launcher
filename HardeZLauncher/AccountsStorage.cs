@@ -35,14 +35,14 @@ namespace Laucher
             return -1;
         }
 
-        private int SelectedAccount
+        public int SelectedAccount
         {
             get
             {
                 return selectedAccount;
             }
 
-            set
+            private set
             {
                 selectedAccount = value;
             }
