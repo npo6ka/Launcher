@@ -84,11 +84,6 @@ namespace Laucher
             {
                 return clientToken;
             }
-
-            set
-            {
-                clientToken = value;
-            }
         }
         public string AccessToken
         {

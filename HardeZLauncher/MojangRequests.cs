@@ -14,7 +14,7 @@ namespace Laucher
         static String sub_URL_Validate = "/validate";
         static String sub_URL_Signout = "/signout";
         static String sub_URL_Invalidate = "/invalidate";
-        static int delay = 5;
+        static int delay = 3;
         static long lastConnect;
 
         private static void setTimeConnections()

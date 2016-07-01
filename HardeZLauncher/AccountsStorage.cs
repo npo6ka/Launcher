@@ -9,7 +9,7 @@ namespace Laucher
     class AccountsStorage
     {
         private List<Account> accountList;
-        private int selectedAccount; 
+        private int selectedAccount;
 
         public AccountsStorage()
         {
@@ -65,6 +65,7 @@ namespace Laucher
         {
             return chengeSelectedAccount(findAccoutInList(acnt));
         }
+
         public int addAccount(Account acnt)
         {
             int err = acnt.isValid();
