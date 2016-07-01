@@ -64,6 +64,10 @@ namespace Laucher
 
         private void button5_Click(object sender, EventArgs e)
         {
+            AccountsForm acntForm = new AccountsForm();
+
+            acntForm.ShowDialog();
+
             /*String[] str = MojangRequests.authenticate(Account.ClientToken, "qwe", "qwe");
             StreamWriter file = new System.IO.StreamWriter(@"E:\fail.txt");
 
@@ -71,14 +75,6 @@ namespace Laucher
             file.WriteLine(str[1]);
             file.Close();*/
 
-            AccountHendler hendl = new AccountHendler();
-
-            Account ac = new Account();
-
-            hendl.authMojang(ac, "asd");
-            hendl.refreshMojang(ac);
-
-            ac.Id = "";
             /*Settings set = new Settings();
             label3.Text += set.assetsDir;
 
