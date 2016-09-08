@@ -21,23 +21,63 @@ namespace Laucher
             
             listAccounts = new List<AccountPanel>();
 
-            int count = 1;
+            int count = 15;
 
             for (int i = 0; i < count; i++)
             {
-                AccountPanel acnt = new AccountPanel(i, panel1.Size.Width, "user" + i);
+                AccountPanel acnt = new AccountPanel(i, panel1.Size.Width, "user" + i, new System.EventHandler(this.AccountPanel_Click));
                 panel1.Controls.Add(acnt.Panel);
                 listAccounts.Add(acnt);
             }
 
-            if (count * AccountPanel.Height <= panel1.Size.Height)
+            setScrollBar(panel1.Size.Height, count * AccountPanel.Height);
+
+            reselectedAccount(selectedAccount);
+        }
+
+        private void setScrollBar(int panelHeight, int totalHeight)
+        {
+            if (totalHeight <= panelHeight)
             {
                 vScrollBar1.Enabled = false;
-            } else
+            }
+            else
             {
                 vScrollBar1.Minimum = 0;
-                vScrollBar1.Maximum = count * AccountPanel.Height - panel1.Size.Height+10;
+                vScrollBar1.Maximum = totalHeight - panelHeight + 10;
             }
+        }
+
+        private void reselectedAccount(int num)
+        {
+            if (listAccounts.Count > num && num > -2)
+            {
+                if (selectedAccount > 0 && selectedAccount < listAccounts.Count)
+                {
+                    listAccounts[selectedAccount].deselectAccount();
+                }
+                if (num != -1)
+                {
+                    selectedAccount = num;
+                    listAccounts[num].selectAccount();
+                }
+            }
+        }
+
+        private void AccountPanel_Click(object sender, EventArgs e)
+        {
+            Control m = (Control)sender;
+            int num = -1;
+            for (int i = 0; i < listAccounts.Count; ++i)
+            {
+                if ((int)listAccounts[i].Panel.Tag == (int)m.Tag)
+                {
+                    num = i;
+                    break;
+                }
+            }
+
+            reselectedAccount(num);
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -47,7 +87,13 @@ namespace Laucher
 
         private void button2_Click(object sender, EventArgs e)
         {
-
+            if (selectedAccount != -1)
+            {
+                reselectedAccount(-1);
+                panel1.Controls.Remove(listAccounts[selectedAccount].Panel);
+                listAccounts.Remove(listAccounts[selectedAccount]);
+                setScrollBar(panel1.Size.Height, listAccounts.Count * AccountPanel.Height);
+            }
         }
 
         private void button3_Click(object sender, EventArgs e)

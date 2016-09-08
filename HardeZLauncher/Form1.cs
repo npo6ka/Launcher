@@ -65,9 +65,7 @@ namespace Laucher
 
         private void button5_Click(object sender, EventArgs e)
         {
-            AccountsForm acntForm = new AccountsForm();
-
-            acntForm.ShowDialog();
+            accountForm.ShowDialog();
 
             /*String[] str = MojangRequests.authenticate(Account.ClientToken, "qwe", "qwe");
             StreamWriter file = new System.IO.StreamWriter(@"E:\fail.txt");

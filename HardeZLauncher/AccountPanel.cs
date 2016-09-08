@@ -40,7 +40,7 @@ namespace Laucher
             }
         }
 
-        public AccountPanel (int num, int size, String nickname)
+        public AccountPanel (int num, int size, String nickname, EventHandler eventHandler)
         {
             label = new System.Windows.Forms.Label();
             Panel = new System.Windows.Forms.Panel();
@@ -55,25 +55,26 @@ namespace Laucher
             label.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             label.Text = nickname;
             label.TabIndex = num*2;
-            label.Click += new System.EventHandler(this.handler_click);
-
-            if (num == 1) 
-                Panel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
+            label.Click += eventHandler;
+            label.Tag = num;
+            
             Panel.Controls.Add(this.label);
-            //panel.Controls.Add(this.panel2);
             Panel.Location = new System.Drawing.Point(0, num * Height);
             Panel.Name = "panel" + num;
             Panel.Size = new System.Drawing.Size(size - 21, Height);
             Panel.TabIndex = num*2 + 1;
-            Panel.Click += new System.EventHandler(this.handler_click);
+            Panel.Click += eventHandler;
+            Panel.Tag = num;
+        }
+        
+        public void selectAccount()
+        {
+            Panel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
         }
 
-
-
-        private void handler_click(object sender, EventArgs e)
+        public void deselectAccount()
         {
-            
-            this.label.Text = "click" + num;
+            Panel.BackColor = System.Drawing.SystemColors.ButtonHighlight;
         }
     }
 }
