@@ -9,7 +9,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace Laucher
+namespace Launcher
 {
     public partial class SettingsForm : Form
     {
@@ -38,7 +38,7 @@ namespace Laucher
             this.Close();
         }
 
-        private void button1_Click(object sender, EventArgs e)
+/*        private void button1_Click(object sender, EventArgs e)
         {
             if (textBox1.Text != null && textBox1.Text != "")
             {
@@ -46,12 +46,12 @@ namespace Laucher
                 this.Close();
             }
         }
-
-        private void button3_Click(object sender, EventArgs e)
+*/
+/*        private void button3_Click(object sender, EventArgs e)
         {
             textBox1.Text = getPath(textBox1.Text);
         }
-
+*/
         private void button4_Click(object sender, EventArgs e)
         {
             /*ListViewItem item1 = new ListViewItem("item1", 0);
@@ -83,54 +83,22 @@ namespace Laucher
 
         }
 
-        private void button4_Click_1(object sender, EventArgs e)
+/*        private void button4_Click_1(object sender, EventArgs e)
         {
             textBox2.Text = getPath(textBox2.Text);
         }
-
-        private void button5_Click(object sender, EventArgs e)
+*/
+        private void textbox_LostFocus(object sender, EventArgs e)
         {
-            textBox3.Text = getPath(textBox3.Text);
-        }
-
-        private void button6_Click(object sender, EventArgs e)
-        {
-            textBox4.Text = getPath(textBox4.Text);
-        }
-
-        private void button7_Click(object sender, EventArgs e)
-        {
-            textBox5.Text = getPath(textBox5.Text);
-        }
-
-        private void button8_Click(object sender, EventArgs e)
-        {
-            textBox6.Text = getPath(textBox6.Text);
-        }
-
-        private void button9_Click(object sender, EventArgs e)
-        {
-            textBox7.Text = getPath(textBox7.Text);
-        }
-
-        private void button10_Click(object sender, EventArgs e)
-        {
-            textBox8.Text = getPath(textBox8.Text);
-        }
-
-        private void button11_Click(object sender, EventArgs e)
-        {
-            textBox9.Text = getPath(textBox9.Text);
-        }
-
-        private void button12_Click(object sender, EventArgs e)
-        {
-            textBox10.Text = getPath(textBox10.Text);
-        }
-
-        private void label11_Click(object sender, EventArgs e)
-        {
-
+            //new System.Windows.Forms.TextBox();
+            String str = (sender as TextBox).Text;
+            if (str == "1")
+            {
+                (sender as TextBox).BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(194)))), ((int)(((byte)(247)))), ((int)(((byte)(188)))));
+            } else if(str == "2")
+            {
+                (sender as TextBox).BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(191)))), ((int)(((byte)(175)))));
+            }
         }
     }
 }

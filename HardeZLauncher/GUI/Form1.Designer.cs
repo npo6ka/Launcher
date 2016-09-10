@@ -1,4 +1,4 @@
-﻿namespace Laucher
+﻿namespace Launcher
 {
     partial class MainForm
     {

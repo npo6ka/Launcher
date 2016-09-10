@@ -3,7 +3,7 @@ using System.Text;
 using System.Net;
 using System.IO;
 
-namespace Laucher
+namespace Launcher
 {
     /* more information on http://wiki.vg/Authentication*/
     class MojangRequests
