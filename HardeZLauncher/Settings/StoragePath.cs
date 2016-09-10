@@ -5,13 +5,19 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Launcher.Settings
+namespace Launcher
 {
     [Serializable]
-    class StoragePath
+    public class StoragePath
     {
         String path;
-        public string Path
+
+        public StoragePath (String str)
+        {
+            path = str;
+        }
+
+        public String Path
         {
             get
             {

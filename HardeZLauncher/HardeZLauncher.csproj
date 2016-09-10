@@ -61,7 +61,6 @@
       <DependentUpon>Form1.cs</DependentUpon>
     </Compile>
     <Compile Include="Settings\InstanceSettings.cs" />
-    <Compile Include="MainClass.cs" />
     <Compile Include="Accounts\MojangRequests.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

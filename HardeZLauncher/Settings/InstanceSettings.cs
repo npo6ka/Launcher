@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Launcher.Settings
+namespace Launcher
 {
-    class InstanceSettings
+    public class InstanceSettings
     {
         private StoragePath instanceDir;
         private int Xmx = 4096;

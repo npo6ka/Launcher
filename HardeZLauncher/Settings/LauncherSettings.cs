@@ -4,9 +4,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Launcher.Settings
+namespace Launcher
 {
-    class LauncherSettings
+    [Serializable]
+    public class LauncherSettings
     {
         private StoragePath laucherWorkDir;
         private StoragePath javaPathDir;
@@ -14,6 +15,7 @@ namespace Launcher.Settings
         private StoragePath libraryDir;
         private StoragePath minecraftJarDir;
         private StoragePath nativeDir;
+        private bool chengeDefaultSetings = false;
 
         public StoragePath LaucherWorkDir
         {
@@ -25,6 +27,10 @@ namespace Launcher.Settings
             set
             {
                 laucherWorkDir = value;
+                if (!chengeDefaultSetings)
+                {
+                    replaceDefaultSecSettings();
+                }
             }
         }
 
@@ -50,6 +56,7 @@ namespace Launcher.Settings
 
             set
             {
+                chengeDefaultSetings = true;
                 assetsDir = value;
             }
         }
@@ -63,6 +70,7 @@ namespace Launcher.Settings
 
             set
             {
+                chengeDefaultSetings = true;
                 libraryDir = value;
             }
         }
@@ -76,6 +84,7 @@ namespace Launcher.Settings
 
             set
             {
+                chengeDefaultSetings = true;
                 minecraftJarDir = value;
             }
         }
@@ -89,6 +98,7 @@ namespace Launcher.Settings
 
             set
             {
+                chengeDefaultSetings = true;
                 nativeDir = value;
             }
         }
@@ -103,20 +113,42 @@ namespace Launcher.Settings
                 NativeDir.isValid();
         }
 
+        public void setDefaultSettings()
+        {
+            if (LaucherWorkDir == null)
+            {
+                LaucherWorkDir = new StoragePath(AppDomain.CurrentDomain.BaseDirectory);
+            }
+            if (javaPathDir == null)
+            {
+                javaPathDir = new StoragePath(@"C:\Program Files\Java\");
+            }
+            
+            chengeDefaultSetings = false;
+        }
 
-        /*laucherDir = @"C:\Games\HardeZLauncher";
-        gameDir = @"C:\Games\HardeZLauncher\modpacks";
-        sapportDir = @"C:\Games\HardeZLauncher\lib";
+        public void replaceDefaultSecSettings()
+        {
+            AssetsDir       = new StoragePath(LaucherWorkDir.Path + @"assets");
+            LibraryDir      = new StoragePath(LaucherWorkDir.Path + @"lib");
+            nativeDir       = new StoragePath(LaucherWorkDir.Path + @"native");
+            MinecraftJarDir = new StoragePath(LaucherWorkDir.Path + @"versions\1.7.10");
+        }
 
-        assetsDir = @"\assets";
-        libDir = @"\lib";
-        nativeDir = @"\native";
-        mineLaunchDir = @"\versions\1.7.10";
 
-        javaPath = @"C:\Program Files\Java\jre1.8.0_91\bin";
+            /*laucherDir = @"C:\Games\HardeZLauncher";
+            gameDir = @"C:\Games\HardeZLauncher\modpacks";
+            sapportDir = @"C:\Games\HardeZLauncher\lib";
 
-        Xmx = 4096;
-        Xms = 512;*/
+            assetsDir = @"\assets";
+            libDir = @"\lib";
+            nativeDir = @"\native";
+            mineLaunchDir = @"\versions\1.7.10";
+
+            javaPath = @"C:\Program Files\Java\jre1.8.0_91\bin";
+
+            Xmx = 4096;
+            Xms = 512;*/
 
 
 

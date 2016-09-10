@@ -11,18 +11,51 @@ namespace Launcher
     {
         private SettingsForm settingsForm;
         private AccountsForm accountForm;
-        private MainClass main;
         private Account account;
+        static public LauncherSettings launchSettings;
+        static public InstanceSettings instSettings;
+
+        private bool loadLauncherSettings()
+        {
+            if (File.Exists(AppDomain.CurrentDomain.BaseDirectory + "LauncherSettings.dat"))
+            {
+                BinaryFormatter binFormat = new BinaryFormatter();
+                using (Stream fStream = File.OpenRead("LauncherSettings.dat"))
+                {
+                    launchSettings =
+                         (LauncherSettings)binFormat.Deserialize(fStream);
+                }
+                return true;
+            } else return false;
+        }
+
+        private void SaveLauncherSettings()
+        {
+            BinaryFormatter binFormat = new BinaryFormatter();
+            using (Stream fStream = new FileStream("LauncherSettings.dat", FileMode.Create, FileAccess.Write, FileShare.None))
+            {
+                binFormat.Serialize(fStream, launchSettings);
+            }
+        }
+
         public MainForm()
         {
             InitializeComponent();
-            main = new MainClass();
-            settingsForm = new SettingsForm(account);
             accountForm = new AccountsForm();
 
             account = new Account();
             account.Name = "olololo";
             label2.Text += account.Name;
+
+            loadLauncherSettings();
+            if (launchSettings == null)
+            {
+                //set defaul val
+                launchSettings = new LauncherSettings();
+                launchSettings.setDefaultSettings();
+                SaveLauncherSettings();
+            }
+            settingsForm = new SettingsForm();
         }
 
         private void button3_Click(object sender, EventArgs e)
@@ -60,7 +93,6 @@ namespace Launcher
         {
             settingsForm.ShowDialog();
             label2.Text += account.Name;
-            
         }
 
         private void button5_Click(object sender, EventArgs e)
@@ -93,7 +125,6 @@ namespace Launcher
             Settings st2 = (Settings)binFormat2.Deserialize(OStream);
 
             label3.Text += st2.assetsDir;*/
-
         }
     }
 }
