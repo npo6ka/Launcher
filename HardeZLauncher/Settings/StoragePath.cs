@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Text.RegularExpressions;
 
 namespace Launcher
 {
@@ -35,9 +36,22 @@ namespace Launcher
             return Directory.Exists(path);
         }
 
-        public static bool checkPath(String str)
+        public static int checkPath(String str)
         {
-            return Directory.Exists(str);
+            if (Directory.Exists(str))
+            {
+                return 2;
+            }
+            else
+            {
+                String regexp = @"^([a-zA-Z]:){1,1}(\\[^\t\n\r\f\v<>:" + '"' + @"\/\\|?*]+)+\\?$";
+                MatchCollection res = Regex.Matches(str, regexp, RegexOptions.IgnoreCase);
+                if (res.Count == 1 && Directory.Exists(str[0].ToString() + ":\\"))
+                {
+                    return 1;
+                }
+                return 0;
+            }
         }
     }
 }

@@ -9,6 +9,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Forms;
+using System.Text.RegularExpressions;
 
 
 namespace Launcher
@@ -47,15 +48,49 @@ namespace Launcher
 
         private bool redrowPathTextbox(TextBox tb)
         {
-            if (Directory.Exists(tb.Text))
+            int buf = StoragePath.checkPath(tb.Text);
+            if (buf == 2)
             {
                 tb.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(194)))), ((int)(((byte)(247)))), ((int)(((byte)(188)))));
+                return true;
+            }
+            else if (buf == 1)
+            {
+                tb.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(235)))), ((int)(((byte)(146)))));
                 return true;
             }
             else
             {
                 tb.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(191)))), ((int)(((byte)(175)))));
                 return false;
+            }
+        }
+
+        private void fillSettings()
+        {
+            if (StoragePath.checkPath(textBox1.Text) > 0)
+            {
+                MainForm.launchSettings.JavaPathDir.Path = textBox1.Text;
+            }
+            if (StoragePath.checkPath(textBox2.Text) > 0)
+            {
+                MainForm.launchSettings.LaucherWorkDir.Path = textBox2.Text;
+            }
+            if (StoragePath.checkPath(textBox3.Text) > 0)
+            {
+                MainForm.launchSettings.AssetsDir.Path = textBox3.Text;
+            }
+            if (StoragePath.checkPath(textBox4.Text) > 0)
+            {
+                MainForm.launchSettings.LibraryDir.Path = textBox4.Text;
+            }
+            if (StoragePath.checkPath(textBox5.Text) > 0)
+            {
+                MainForm.launchSettings.NativeDir.Path = textBox5.Text;
+            }
+            if (StoragePath.checkPath(textBox6.Text) > 0)
+            {
+                MainForm.launchSettings.MinecraftJarDir.Path = textBox6.Text;
             }
         }
 
@@ -101,11 +136,13 @@ namespace Launcher
                 DialogResult result = MessageBox.Show("realy?", "error", MessageBoxButtons.YesNo);
                 if (result == DialogResult.Yes)
                 {
+                    fillSettings();
                     this.Close();
                 }
             }
             else
             {
+                fillSettings();
                 this.Close();
             }
         }

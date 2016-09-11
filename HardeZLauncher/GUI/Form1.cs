@@ -56,6 +56,7 @@ namespace Launcher
                 SaveLauncherSettings();
             }
             settingsForm = new SettingsForm();
+            
         }
 
         private void button3_Click(object sender, EventArgs e)
@@ -92,7 +93,7 @@ namespace Launcher
         private void button2_Click(object sender, EventArgs e)
         {
             settingsForm.ShowDialog();
-            label2.Text += account.Name;
+            SaveLauncherSettings();
         }
 
         private void button5_Click(object sender, EventArgs e)
